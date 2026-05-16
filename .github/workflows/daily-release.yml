@@ -34,4 +34,4 @@ jobs:
         with:
           tag_name: ${{ steps.tag.outputs.tag }}
           name: "Daily release ${{ steps.tag.outputs.tag }}"
-          files: *.srs   # 改成你程序实际输出的文件名/路径
+          files: "*.srs"
