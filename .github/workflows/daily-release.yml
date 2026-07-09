@@ -29,6 +29,30 @@ jobs:
           TAG="release-$(date -u '+%Y%m%d')"
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
 
+      - name: Download release asset
+        uses: robinraju/release-downloader@v1
+        with:
+          repository: SagerNet/sing-box
+          latest: true
+          fileName: "*-linux-amd64-musl.tar.gz"
+
+      - name: Extract
+        run: |
+          tar xzf *.tar.gz
+          cp *linux-amd64-musl/sing-box .
+
+      - name: Make executable
+        run: chmod +x ./sing-box
+
+      - name: Download Adgurad Dns Filter
+        run: |
+          curl -sL -o filter.txt \
+            https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+
+      - name: Convert
+        run: |
+          ./sing-box rule-set convert --type adguard --output adguard-dns-filter.srs filter.txt
+
       - name: Publish to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
