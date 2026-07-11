@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"encoding/json"
 	"net/http"
 	"os"
 	"strings"
@@ -10,7 +11,6 @@ import (
 	"github.com/sagernet/sing-box/common/srs"
 	"github.com/sagernet/sing-box/log"
 	"github.com/sagernet/sing-box/option"
-	"github.com/sagernet/sing/common/json"
 )
 
 func main() {
