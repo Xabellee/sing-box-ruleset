@@ -1,0 +1,59 @@
+{
+  "source": [
+    {
+      "type": "static",
+      "name": "tracker",
+      "content": {
+        "version": 3,
+        "rules": [
+          {
+            "domain": ["appcloud2.in.zhihu.com"],
+            "domain_suffix": [
+              "ingest.sentry.io",
+              "ingest.us.sentry.io",
+              "ingest.us2.sentry.io",
+              "ingest.de.sentry.io"
+            ],
+            "domain_regex": ["http-intake\\.logs\\..+\\.datadoghq\\.com"]
+          }
+        ]
+      }
+    },
+    {
+      "type": "static",
+      "name": "infra",
+      "content": {
+        "version": 3,
+        "rules": [
+          {
+            "domain": [
+              "networkcheck.kde.org",
+              "nmcheck.gnome.org",
+              "ping.archlinux.org",
+              "redirect.archlinux.org",
+              "connectivity-check.ubuntu.com"
+            ],
+            "domain_suffix": [
+              "captive.apple.com",
+              "detectportal.firefox.com",
+              "msftconnecttest.com",
+              "msftncsi.com",
+              "network-test.debian.org",
+              "push.apple.com"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "adguard",
+      "name": "adguard-dns-filter",
+      "url": "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt"
+    },
+    {
+      "type": "raw",
+      "name": "cn-additional",
+      "url": "https://static-file-global.353355.xyz/rules/cn-additional-list.txt"
+    }
+  ]
+}

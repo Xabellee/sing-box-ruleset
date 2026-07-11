@@ -8,6 +8,7 @@ require (
 )
 
 require (
+	github.com/logrusorgru/aurora v2.0.3+incompatible // indirect
 	github.com/miekg/dns v1.1.72 // indirect
 	go4.org/netipx v0.0.0-20231129151722-fdeea329fbba // indirect
 	golang.org/x/mod v0.33.0 // indirect

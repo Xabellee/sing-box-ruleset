@@ -21,37 +21,13 @@ jobs:
           go-version: 'stable'
 
       - name: Run program
-        run: go run main.go   # 程序执行后会生成输出文件
+        run: go run .   # 程序执行后会生成输出文件
 
       - name: Create release tag
         id: tag
         run: |
           TAG="release-$(date -u '+%Y%m%d')"
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
-
-      - name: Download release asset
-        uses: robinraju/release-downloader@v1
-        with:
-          repository: SagerNet/sing-box
-          latest: true
-          fileName: "*-linux-amd64-musl.tar.gz"
-
-      - name: Extract
-        run: |
-          tar xzf *.tar.gz
-          cp *linux-amd64-musl/sing-box .
-
-      - name: Make executable
-        run: chmod +x ./sing-box
-
-      - name: Download Adgurad Dns Filter
-        run: |
-          curl -sL -o filter.txt \
-            https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
-
-      - name: Convert
-        run: |
-          ./sing-box rule-set convert --type adguard --output adguard-dns-filter.srs filter.txt
 
       - name: Publish to GitHub Release
         uses: softprops/action-gh-release@v2
