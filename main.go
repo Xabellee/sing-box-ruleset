@@ -47,7 +47,7 @@ func handleAdguard(c Config) option.PlainRuleSetCompat {
 	defer rsp.Body.Close()
 	rules, err := adguard.ToOptions(rsp.Body, log.StdLogger())
 	ruleSet := option.PlainRuleSet{Rules: rules}
-	plainRuleSet := option.PlainRuleSetCompat{Options: ruleSet, Version: 3}
+	plainRuleSet := option.PlainRuleSetCompat{Options: ruleSet, Version: 2}
 	return plainRuleSet
 }
 
@@ -81,7 +81,7 @@ func handleRaw(c Config) option.PlainRuleSetCompat {
 	}
 	ruleSet = strings.TrimSuffix(ruleSet, ",")
 	ruleSet += FOOTER
-	plainRuleSet := option.PlainRuleSetCompat{}
+	plainRuleSet := option.PlainRuleSetCompat{Version: 3}
 	json.Unmarshal([]byte(ruleSet), &plainRuleSet)
 	return plainRuleSet
 }
@@ -92,6 +92,6 @@ func output(ruleSetList map[string]option.PlainRuleSetCompat) {
 		if err != nil {
 			panic(err)
 		}
-		srs.Write(writer, v.Options, 3)
+		srs.Write(writer, v.Options, v.Version)
 	}
 }

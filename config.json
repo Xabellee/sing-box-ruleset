@@ -21,28 +21,6 @@
     },
     {
       "type": "static",
-      "name": "unreachable",
-      "content": {
-        "version": 4,
-        "rules": [
-          {
-            "type": "logical",
-            "mode": "and",
-            "rules": [
-              {
-                "default_interface_address": "2000::/3",
-                "invert": true
-              },
-              {
-                "ip_version": 6
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "type": "static",
       "name": "infra",
       "content": {
         "version": 3,
