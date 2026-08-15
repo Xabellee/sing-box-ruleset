@@ -31,7 +31,8 @@
               "nmcheck.gnome.org",
               "ping.archlinux.org",
               "redirect.archlinux.org",
-              "connectivity-check.ubuntu.com"
+              "connectivity-check.ubuntu.com",
+              "geoip.kde.org"
             ],
             "domain_suffix": [
               "captive.apple.com",
